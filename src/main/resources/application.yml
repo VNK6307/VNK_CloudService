@@ -1,0 +1,25 @@
+server:
+  port: 8765
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/my_cloud_5
+    username: postgres
+    password: 751103
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: false
+  main:
+    allow-circular-references: true
+
+## jwt
+jwt:
+  secret: cd5b2766f6568df2157285b801961640125351faf1e06826d65ab1f2a22daf82
+  lifetime: 10m
+
+## cors
+cors:
+  methods: POST, GET, PUT, DELETE

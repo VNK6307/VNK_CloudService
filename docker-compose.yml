@@ -1,0 +1,31 @@
+version: '3.5'
+
+services:
+  server:
+    build: ./
+    container_name: 'my-cloud'
+    image: 'my-cloud:0.0.1'
+    ports:
+      - '8765:8765'
+    depends_on:
+      - database
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/my_cloud_5
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 751103
+
+  database:
+    container_name: 'my-cloud-db'
+    image: postgres
+    environment:
+      POSTGRES_DB: "my_cloud_5"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "751103"
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+volumes:
+  postgres:
